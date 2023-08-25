@@ -1,4 +1,4 @@
-# EMT(Organization Management Tool)
+# OMT(Organization Management Tool)
 
 ## About Project
 
