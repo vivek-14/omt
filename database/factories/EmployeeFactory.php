@@ -22,12 +22,22 @@ class EmployeeFactory extends Factory
      */
     public function definition(): array
     {
+
+
+        $manager_id = Employee::inRandomOrder()->first();
+
+        if ($manager_id !== null) {
+            $manager_id->id;
+        } else {
+            $manager_id = null;
+        }
+
         return [
             'user_id' => Users::factory(),
             'company_id' => Company::factory(),
             'dept_id' => Department::factory(),
             'role_id' => Roles::factory(),
-            'manager_id' => Employee::inRandomOrder()->first()->id,
+            'manager_id' => $manager_id,
             'position' => fake()->jobTitle(),
             'join_date' => fake()->dateTimeThisDecade(),
             'leave_date' => fake()->dateTimeThisDecade(),
