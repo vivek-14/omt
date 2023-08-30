@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\Company;
 use App\Models\Roles;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -53,11 +53,10 @@ class Employee extends Model
         $this->attributes['sin'] = $value ? Crypt::encrypt($value) : null;
     }
 
-
     // Relations
-    public function users()
+    public function user()
     {
-        return $this->belongsTo(Users::class);
+        return $this->belongsTo(User::class);
     }
 
     public function roles()

@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('info', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['O', 'C', 'D']); // O => organization, C => Comapny, D => Department
+            $table->morphs('infoable');
             $table->enum('status', ['active', 'inactive', 'pending'])->nullable();
             $table->string('slogan')->nullable();
             $table->string('logo')->nullable();

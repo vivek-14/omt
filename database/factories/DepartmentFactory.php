@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Http\Resources\Employee;
 use App\Models\Company;
 use App\Models\Info;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,8 +21,7 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'manager_id' => Users::factory(),
-            'info_id' => Info::factory(['type' => 'D', 'status' => 'active']),
+            'manager_id' => User::factory(),
             'company_id' => Company::factory()
         ];
     }

@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('info_id')->constrained('info')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

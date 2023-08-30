@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
+use App\Models\Department;
+use App\Models\Organization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +17,13 @@ class InfoFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    public $attributes = [
+
+    ];
+
     public function definition(): array
     {
         return [
-            'type' => fake()->randomElement(['O', 'C', 'D']),
             'status' => fake()->randomElement(['active', 'inactive', 'pending']),
             'slogan' => fake()->sentence(),
             'logo' => fake()->imageUrl(),
@@ -28,5 +34,31 @@ class InfoFactory extends Factory
             'pin_code' => fake()->postcode(),
             'description' => fake()->paragraph()
         ];
+    }
+
+    public function forTable($class)
+    {
+        if (strtolower($class) === 'organization') {
+            return $this->state(function () {
+                return [
+                    'infoable_type' => Organization::class,
+                    'infoable_id' => Organization::factory()
+                ];
+            });
+        } elseif (strtolower($class) === 'company') {
+            return $this->state(function () {
+                return [
+                    'infoable_type' => Company::class,
+                    'infoable_id' => Company::factory()
+                ];
+            });
+        } elseif (strtolower($class) === 'department') {
+            return $this->state(function () {
+                return [
+                    'infoable_type' => Department::class,
+                    'infoable_id' => Department::factory()
+                ];
+            });
+        }
     }
 }

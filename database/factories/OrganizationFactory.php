@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Info;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,8 +21,7 @@ class OrganizationFactory extends Factory
     public function definition(): array
     {
         return [
-            'info_id' => Info::factory(['type' => 'O', 'status' => 'active']),
-            'owner_id' => Users::factory()
+            'owner_id' => User::factory(['is_owner' => true])
         ];
     }
 }

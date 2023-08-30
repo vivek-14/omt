@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Info extends Model
@@ -17,7 +18,6 @@ class Info extends Model
      */
     protected $table = 'info';
     protected $fillable = [
-        'type',
         'status',
         'slogan',
         'logo',
@@ -33,7 +33,7 @@ class Info extends Model
         'deleted_at'
     ];
 
-    public function entity()
+    public function infoable(): MorphTo
     {
         return $this->morphTo();
     }

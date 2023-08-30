@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Http\Resources\Employee;
+use App\Models\Employee;
 use App\Models\Company;
 use App\Models\Department;
 use App\Models\Organization;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Users extends Authenticatable
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, SoftDeletes;
 
@@ -27,7 +27,10 @@ class Users extends Authenticatable
         'bio',
         'email',
         'password',
+        'is_owner'
     ];
+
+    protected $with = ['employee'];
 
     /**
      * The attributes that should be hidden for serialization.

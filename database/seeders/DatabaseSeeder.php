@@ -2,11 +2,8 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Roles;
-use App\Models\Employee;
-use App\Models\Industry;
+use Database\Seeders\OrganizationSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Employee::factory(5)->create();
+        $this->call([
+            OrganizationSeeder::class,
+            CompanySeeder::class,
+            DepartmentSeeder::class
+        ]);
     }
 }

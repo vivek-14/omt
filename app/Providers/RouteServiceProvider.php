@@ -13,7 +13,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The path to your application's "home" route.
      *
-     * Typically, users are redirected here after authentication.
+     * Typically, user are redirected here after authentication.
      *
      * @var string
      */
@@ -30,8 +30,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::middleware('api')
-                ->prefix('api')
-                ->group(base_path('routes/api.php'));
+                ->prefix('api/v1')
+                ->group(base_path('routes/v1/api.php'));
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));

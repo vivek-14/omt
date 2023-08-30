@@ -5,8 +5,9 @@ namespace Database\Factories;
 use App\Models\Company;
 use App\Models\Department;
 use App\Models\Employee;
+use App\Models\Info;
 use App\Models\Roles;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -33,9 +34,9 @@ class EmployeeFactory extends Factory
         }
 
         return [
-            'user_id' => Users::factory(),
-            'company_id' => Company::factory(),
-            'dept_id' => Department::factory(),
+            'user_id' => User::factory(),
+            'company_id' => Company::factory()->create(),
+            'dept_id' => Department::factory()->create(),
             'role_id' => Roles::factory(),
             'manager_id' => $manager_id,
             'position' => fake()->jobTitle(),
